@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <title>JJUTOPIA</title>
     <style>
-        body{margin:0;}
-        header {
+        body{
+            margin:0;
             background-color: #F1F1F1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
             width: 1440px;
             height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        header img {margin-left: 120px;}
+        header img {margin-left: 208px;}
         header nav ul {
-            margin-right: 120px;
+            margin-right: 208px;
             list-style: none;
             display: flex;
         }
@@ -31,7 +36,6 @@
         }
         main {height: 894px;}
         footer {
-            background-color: #F1F1F1;
             width: 1440px;
             height: 50px;
             display: flex;
@@ -39,14 +43,14 @@
         }
         footer div {
             font-family: Roboto;
+            color: #5C5C5C;
             width: 720px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
         }
-
         .mypage {
-            margin-right: 120px;
+            margin-right: 208px;
             display: flex;
             align-items: center;
         }
@@ -54,7 +58,9 @@
 </head>
 <body>
     <header>
-        <img src="image/logo.PNG" alt="My Image" width="170" height="60">
+        <a href="">
+            <img src="image/logo.PNG" alt="My Image" width="170" height="60">
+        </a>
         <nav>
             <ul>
                 <li><a href="">me</a> </li>
