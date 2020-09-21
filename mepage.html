@@ -114,7 +114,6 @@
             margin-right: 10px;
             font-size: 36px;
         }
-
         .content {
             margin-bottom: 20px;
             font-size: 24px;
@@ -141,6 +140,88 @@
             margin-right: 0px;
             display: flex;
             align-items: center;
+        }
+
+        @media ( max-width: 768px ){
+            body {width: 768px; overflow-x: auto;}
+
+            header {
+                width: 768px;
+            }
+            header nav {
+                width: 768px;
+            }
+            main {
+                width: 768px;
+            }
+            footer {
+                width: 768px;
+            }
+            footer div {
+                width: 380px;
+            }
+        }
+        @media ( max-width: 414px ){
+            body {width: 414px; overflow-x: auto;}
+            header {
+                width: 414px;
+                height: 150px;
+            }
+            header img {
+                margin : 30px 0 15px 0;
+                width: 200px;
+                height: 80px;
+            }
+            header nav {
+                width: 350px;
+                border-top: 1px solid #939393;
+                border-bottom: 1px solid #939393;
+            }
+            header nav ul {
+                margin : 8px;
+            }
+            header nav ul li a {
+                margin: 15px;
+                font-size: 15px;
+            }
+            main {
+                margin: 39px;
+                width: 414px;
+                height: 500px;
+            }
+            .slide {
+                width: 350px;
+                height: 300px;
+            }
+            .slide li img {
+                width: 350px;
+                height: auto;
+            }
+            .slide .bullet {
+                bottom:5px;
+            }
+            .name {
+                margin-top: 30px;
+            }
+            .name h1 {
+                margin-right: 10px;
+                font-size: 28px;
+                font-weight: normal;
+            }
+            .name h2 {
+                font-size: 18px;
+            }
+            .content {
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            footer {
+                width: 350px;
+                height: 35px;
+            }
+            footer div {
+                width: 200px;
+            }
         }
     </style>
 </head>
