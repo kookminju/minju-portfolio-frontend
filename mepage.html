@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>me</title>
+    <style>
+        @font-face {
+            font-family: "My Font";
+            src: url("THE_Oegyeinseolmyeongseo.ttf");
+        }
+        body{
+            margin:0;
+            background-color: #F1F1F1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 1440px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header img {
+            margin : 45px 0 35px 0;
+        }
+        header nav {
+            width: 1024px;
+            border-top: 1px solid #939393;
+            border-bottom: 1px solid #939393;
+        }
+        header nav ul {
+            margin : 10px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        header nav ul li a {
+            margin: 15px;
+            text-decoration: none;
+            font-family: Cambria;
+            font-size: 18px;
+            color: #5C5C5C;
+        }
+        main {
+            margin: 39px;
+            width: 1440px;
+            height: 800px;
+            font-family: "My Font";
+            color: #5c5c5c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide ul li {list-style:none;}
+        .slide {
+            width:700px;
+            height:480px;
+            overflow:hidden;
+            position:relative;
+        }
+        .slide li {
+            position:absolute;
+            left:0; right:0; top:0; bottom:0;
+            opacity:0;
+            transition:1s;
+            display: flex;
+            justify-content: center;
+        }
+        .slide li:nth-child(1) {background:#F1F1F1;}
+        .slide li:nth-child(2) {background:#F1F1F1;}
+        .slide li:nth-child(3) {background:#F1F1F1;}
+        .slide li:nth-child(4) {background:#F1F1F1;}
+        .slide li:nth-child(5) {background:#F1F1F1;}
+        .slide input {display:none;}
+        .slide .bullet {
+            position:absolute;
+            bottom:20px; left:0; right:0;
+            text-align:center;
+            z-index:10;
+        }
+        .slide .bullet label {
+            width:8px;
+            height:8px;
+            border-radius:10px;
+            border:2px solid #666;
+            display:inline-block;
+            background:#fff;
+            font-size:0;
+            transition:0.5s;
+            cursor:pointer;
+        }
+
+        #pos1:checked ~ ul li:nth-child(1),
+        #pos2:checked ~ ul li:nth-child(2),
+        #pos3:checked ~ ul li:nth-child(3),
+        #pos4:checked ~ ul li:nth-child(4),
+        #pos5:checked ~ ul li:nth-child(5) {opacity:1;}
+
+        #pos1:checked ~ .bullet label:nth-child(1),
+        #pos2:checked ~ .bullet label:nth-child(2),
+        #pos3:checked ~ .bullet label:nth-child(3),
+        #pos4:checked ~ .bullet label:nth-child(4),
+        #pos5:checked ~ .bullet label:nth-child(5) {background:#666;}
+
+        .name {
+            margin: 60px 0 20px 0;
+            height: 42px;
+            display: flex;
+            align-items: center;
+        }
+        .name h1 {
+            margin-right: 10px;
+            font-size: 36px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer {
+            border-top: 1px solid #939393;
+            width: 1024px;
+            height: 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        footer div {
+            font-family: Roboto;
+            color: #5C5C5C;
+            width: 540px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .mypage {
+            margin-right: 0px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="./JJUTOPIA.html">
+            <img src="image/logo.PNG" alt="My Image" width="310" height="120">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="./mepage.html">me</a> </li>
+                <li><a href="">project</a></li>
+                <li><a href="">daily</a></li>
+                <li><a href="">guest</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="slide">
+            <input type="radio" name="pos" id="pos1" checked>
+            <input type="radio" name="pos" id="pos2">
+            <input type="radio" name="pos" id="pos3">
+            <input type="radio" name="pos" id="pos4">
+            <input type="radio" name="pos" id="pos5">
+            <ul>
+                <li><img src="image/me1.png" width="700" height="480"></li>
+                <li><img src="image/me2.JPEG" width="480" height="480"></li>
+                <li><img src="image/me3.jpg" width="480" height="480"></li>
+                <li><img src="image/me4.png" width="700" height="480"></li>
+                <li><img src="image/me5.jpg" width="480" height="480"></li>
+            </ul>
+            <p class="bullet">
+                <label for="pos1">1</label>
+                <label for="pos2">2</label>
+                <label for="pos3">3</label>
+                <label for="pos4">4</label>
+                <label for="pos5">5</label>
+            </p>
+        </div>
+        <div class="name">
+            <h1>김민주</h1>
+            <h2>KIM MINJU</h2>
+        </div>
+        <div class="content">
+            <h>1998.02.05<br></h>
+            <h>B형<br></h>
+            <h>ISFP<br></h>
+        </div>
+        <div class="content">
+            <h>국민대학교 소프트웨어학부<br></h>
+            <h>웹동아리 WINK 부원</h>
+        </div>
+    </main>
+    <footer>
+        <div>&copyminju
+            <div class="mypage">
+                <a href="https://www.instagram.com/0205_jju/">
+                    <img src="image/instagram.png" alt="My Image" width="30" height="30">
+                </a>
+                <a href="https://github.com/kookminju">
+                    <img src="image/git.png" alt="My Image" width="22" height="22">
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
