@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>guest</title>
+    <style>
+        @font-face {
+            font-family: "My Font";
+            src: url("THE_Oegyeinseolmyeongseo.ttf");
+        }
+        body{
+            margin:0;
+            background-color: #F1F1F1;
+            font-family: "My Font";
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 1440px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header img {
+            margin : 45px 0 35px 0;
+        }
+        header nav {
+            width: 1024px;
+            border-top: 1px solid #939393;
+            border-bottom: 1px solid #939393;
+        }
+        header nav ul {
+            margin : 10px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        header nav ul li a {
+            margin: 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #5C5C5C;
+        }
+        header nav ul li a:hover {
+            color: #a1a1a1;
+        }
+        main {
+            margin: 20px;
+        }
+        footer {
+            border-top: 1px solid #939393;
+            width: 1024px;
+            height: 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        footer div {
+            font-family: Roboto;
+            color: #5C5C5C;
+            width: 540px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .mypage {
+            margin-right: 0px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="./index.html">
+        <img src="image/logo.PNG" alt="My Image" width="310" height="120">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="./mepage.html">me</a> </li>
+            <li><a href="./projectpage.html">project</a></li>
+            <li><a href="./dailypage.html">daily</a></li>
+            <li><a href="./guestpage.html"><strong><U>guest</U></strong></a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                <thread>
+                    <tr>
+                        <th style="background-color: #eeeeee; text-align: center;">번호</th>
+                        <th style="background-color: #eeeeee; text-align: center;">제목</th>
+                        <th style="background-color: #eeeeee; text-align: center;">작성자</th>
+                        <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+                    </tr>
+                </thread>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>안녕하세요</td>
+                    <td>민주</td>
+                    <td>2020-09-25</td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="">글쓰기</a>
+        </div>
+    </div>
+</main>
+<footer>
+    <div>&copyminju
+        <div class="mypage">
+            <a href="https://www.instagram.com/0205_jju/">
+                <img src="image/instagram.png" alt="My Image" width="30" height="30">
+            </a>
+            <a href="https://github.com/kookminju">
+                <img src="image/git.png" alt="My Image" width="22" height="22">
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyA0OydHGpmERTSbaz0IvuSv8a1mbVP6CQw",
+        authDomain: "daily-26941.firebaseapp.com",
+        databaseURL: "https://daily-26941.firebaseio.com",
+        projectId: "daily-26941",
+        storageBucket: "daily-26941.appspot.com",
+        messagingSenderId: "775930981651",
+        appId: "1:775930981651:web:5402d73350461f60507ee6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the database service
+    var database = firebase.database();
+
+    console.log(database);
+</script>
+</body>
+</html>
