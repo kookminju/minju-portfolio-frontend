@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>guest</title>
+    <link rel="stylesheet" href="bootstrap.css" >
     <style>
         @font-face {
             font-family: "My Font";
@@ -47,7 +48,8 @@
             color: #a1a1a1;
         }
         main {
-            margin: 20px;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
         footer {
             border-top: 1px solid #939393;
@@ -97,16 +99,11 @@
                         <th style="background-color: #eeeeee; text-align: center;">작성일</th>
                     </tr>
                 </thread>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>안녕하세요</td>
-                    <td>민주</td>
-                    <td>2020-09-25</td>
-                </tr>
+                <tbody class="content">
+
                 </tbody>
             </table>
-            <a href="">글쓰기</a>
+            <a href="" class="btn btn-primary pull-right">글쓰기</a>
         </div>
     </div>
 </main>
@@ -129,19 +126,61 @@
 <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
-        apiKey: "AIzaSyA0OydHGpmERTSbaz0IvuSv8a1mbVP6CQw",
-        authDomain: "daily-26941.firebaseapp.com",
-        databaseURL: "https://daily-26941.firebaseio.com",
-        projectId: "daily-26941",
-        storageBucket: "daily-26941.appspot.com",
-        messagingSenderId: "775930981651",
-        appId: "1:775930981651:web:5402d73350461f60507ee6"
+        apiKey: "AIzaSyBUFX93Aj5ehAaShRvKvhP-asQZbkEm_Uw",
+        authDomain: "jjuguest.firebaseapp.com",
+        databaseURL: "https://jjuguest.firebaseio.com",
+        projectId: "jjuguest",
+        storageBucket: "jjuguest.appspot.com",
+        messagingSenderId: "914843368286",
+        appId: "1:914843368286:web:afce25afb607c736932dcf"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     // Get a reference to the database service
-    var database = firebase.database();
+    const database = firebase.database();
+
+    function writePost(number, title, username, date) {
+        // A post entry.
+        const postData = {
+            number,
+            title,
+            username,
+            date,
+        };
+
+        // Get a key for a new Post.
+        const newPostKey = firebase.database().ref().child('posts').push(postData);
+    }
+
+    function getPosts(){
+        const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){
+            const postData = Object.entries(snapshot.val());
+            let tableContent = document.querySelector(".content");
+
+            console.log(tableContent);
+            for (let i = 0; i < postData.length; i++)
+            {
+                const [key, body] = postData[i];
+
+                tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
+            }
+        });
+    }
+
+    const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){
+        const postData = Object.entries(snapshot.val());
+        let tableContent = document.querySelector(".content");
+        tableContent.innerHTML = "";
+
+        console.log(tableContent);
+        for (let i = 0; i < postData.length; i++)
+        {
+            const [key, body] = postData[i];
+
+            tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
+        }
+    });
 
     console.log(database);
 </script>
