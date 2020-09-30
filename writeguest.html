@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>write</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        @font-face {
+            font-family: "My Font";
+            src: url("THE_Oegyeinseolmyeongseo.ttf");
+        }
+        body{
+            margin:0;
+            background-color: #F1F1F1;
+            font-family: "My Font";
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 1440px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header img {
+            margin : 45px 0 35px 0;
+        }
+        header nav {
+            width: 1024px;
+            border-top: 1px solid #939393;
+            border-bottom: 1px solid #939393;
+        }
+        header nav ul {
+            margin : 10px;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        header nav ul li a {
+            margin: 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #5C5C5C;
+        }
+        header nav ul li a:hover {
+            color: #a1a1a1;
+        }
+        main {
+            margin: 40px;
+        }
+        .container {
+            width: 900px;
+        }
+        footer {
+            border-top: 1px solid #939393;
+            width: 1024px;
+            height: 50px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        footer div {
+            font-family: Roboto;
+            color: #5C5C5C;
+            width: 540px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .mypage {
+            margin-right: 0px;
+            display: flex;
+            align-items: center;
+        }
+        @media ( max-width: 768px ){
+            body {width: 768px; overflow-x: auto;}
+
+            header {
+                width: 768px;
+            }
+            header nav {
+                width: 700px;
+            }
+            .container {
+                width: 650px;
+            }
+            footer {
+                width: 700px;
+            }
+            footer div {
+                width: 380px;
+            }
+        }
+        @media ( max-width: 414px ){
+            body {width: 414px; overflow-x: auto;}
+            header {
+                width: 414px;
+                height: 150px;
+            }
+            header img {
+                margin : 30px 0 15px 0;
+                width: 200px;
+                height: 80px;
+            }
+            header nav {
+                width: 350px;
+                border-top: 1px solid #939393;
+                border-bottom: 1px solid #939393;
+            }
+            header nav ul {
+                margin : 8px;
+            }
+            header nav ul li a {
+                margin: 15px;
+                font-size: 15px;
+            }
+            main {
+                font-size: 13px;
+            }
+            .container {
+                width: 310px;
+            }
+            .form-control {
+                font-size: 13px;
+            }
+            footer {
+                width: 350px;
+                height: 35px;
+            }
+            footer div {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="./index.html">
+        <img src="image/logo.PNG" alt="My Image" width="310" height="120">
+    </a>
+    <nav>
+        <ul>
+            <li><a href="./mepage.html">me</a> </li>
+            <li><a href="./projectpage.html">project</a></li>
+            <li><a href="./dailypage.html">daily</a></li>
+            <li><a href="./guestpage.html"><strong><U>guest</U></strong></a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <form method="post" action="guestpage.html">
+                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                    <thread>
+                        <tr>
+                            <th clospan= "2" style="background-color: #eeeeee; text-align: center;">방명록･ᴗ･</th>
+                        </tr>
+                    </thread>
+                    <tbody class="content">
+                        <tr>
+                            <td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
+                        </tr>
+                        <tr>
+                            <td><textarea type="text" class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+            </form>
+        </div>
+    </div>
+</main>
+<footer>
+    <div>&copyminju
+        <div class="mypage">
+            <a href="https://www.instagram.com/0205_jju/">
+                <img src="image/instagram.png" alt="My Image" width="30" height="30">
+            </a>
+            <a href="https://github.com/kookminju">
+                <img src="image/git.png" alt="My Image" width="22" height="22">
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+<!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>-->
+<!--<script>-->
+<!--    // Your web app's Firebase configuration-->
+<!--    var firebaseConfig = {-->
+<!--        apiKey: "AIzaSyBUFX93Aj5ehAaShRvKvhP-asQZbkEm_Uw",-->
+<!--        authDomain: "jjuguest.firebaseapp.com",-->
+<!--        databaseURL: "https://jjuguest.firebaseio.com",-->
+<!--        projectId: "jjuguest",-->
+<!--        storageBucket: "jjuguest.appspot.com",-->
+<!--        messagingSenderId: "914843368286",-->
+<!--        appId: "1:914843368286:web:afce25afb607c736932dcf"-->
+<!--    };-->
+<!--    // Initialize Firebase-->
+<!--    firebase.initializeApp(firebaseConfig);-->
+
+<!--    // Get a reference to the database service-->
+<!--    const database = firebase.database();-->
+
+<!--    function writePost(number, title, username, date) {-->
+<!--        // A post entry.-->
+<!--        const postData = {-->
+<!--            number,-->
+<!--            title,-->
+<!--            username,-->
+<!--            date,-->
+<!--        };-->
+
+<!--        // Get a key for a new Post.-->
+<!--        const newPostKey = firebase.database().ref().child('posts').push(postData);-->
+<!--    }-->
+
+<!--    function getPosts(){-->
+<!--        const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){-->
+<!--            const postData = Object.entries(snapshot.val());-->
+<!--            let tableContent = document.querySelector(".content");-->
+
+<!--            console.log(tableContent);-->
+<!--            for (let i = 0; i < postData.length; i++)-->
+<!--            {-->
+<!--                const [key, body] = postData[i];-->
+
+<!--                tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+
+<!--    const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){-->
+<!--        const postData = Object.entries(snapshot.val());-->
+<!--        let tableContent = document.querySelector(".content");-->
+<!--        tableContent.innerHTML = "";-->
+
+<!--        console.log(tableContent);-->
+<!--        for (let i = 0; i < postData.length; i++)-->
+<!--        {-->
+<!--            const [key, body] = postData[i];-->
+
+<!--            tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"-->
+<!--        }-->
+<!--    });-->
+
+<!--    console.log(database);-->
+<!--</script>-->
+</body>
+</html>
