@@ -51,6 +51,9 @@
             margin-top: 50px;
             margin-bottom: 50px;
         }
+        .container {
+            width: 1000px;
+        }
         footer {
             border-top: 1px solid #939393;
             width: 1024px;
@@ -161,7 +164,7 @@
 
                     </tbody>
                 </table>
-                <a href="writedaily.html" class="btn btn-primary pull-right">글쓰기</a>
+                <a href="writedaily.html" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;">글쓰기</a>
             </div>
         </div>
     </main>
@@ -198,18 +201,6 @@
         // Get a reference to the database service
         const database = firebase.database();
 
-        function writePost(number, title, username, date) {
-            // A post entry.
-            const postData = {
-                number,
-                title,
-                username,
-                date,
-            };
-
-            // Get a key for a new Post.
-            const newPostKey = firebase.database().ref().child('posts').push(postData);
-        }
 
         function getPosts(){
             const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){

@@ -152,7 +152,7 @@
     <div class="container">
         <div class="row">
             <form method="post" action="dailypage.html">
-                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                <table class="table table-borderless" style="text-align: center; border: 1px solid #dddddd">
                     <thread>
                         <tr>
                             <th clospan= "2" style="background-color: #eeeeee; text-align: center;">오늘기록･ᴗ･</th>
@@ -163,11 +163,17 @@
                         <td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
                     </tr>
                     <tr>
+                        <td><input type="text" class="form-control" placeholder="작성자" name="username" maxlength="10"></td>
+                    </tr>
+                    <tr>
                         <td><textarea type="text" class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" placeholder="비밀번호" name="password" maxlength="10"></td>
                     </tr>
                     </tbody>
                 </table>
-                <input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+                <input type="submit" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;" value="글쓰기">
             </form>
         </div>
     </div>
@@ -186,68 +192,42 @@
 </footer>
 
 
-<!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>-->
-<!--<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>-->
-<!--<script>-->
-<!--    // Your web app's Firebase configuration-->
-<!--    var firebaseConfig = {-->
-<!--        apiKey: "AIzaSyBUFX93Aj5ehAaShRvKvhP-asQZbkEm_Uw",-->
-<!--        authDomain: "jjuguest.firebaseapp.com",-->
-<!--        databaseURL: "https://jjuguest.firebaseio.com",-->
-<!--        projectId: "jjuguest",-->
-<!--        storageBucket: "jjuguest.appspot.com",-->
-<!--        messagingSenderId: "914843368286",-->
-<!--        appId: "1:914843368286:web:afce25afb607c736932dcf"-->
-<!--    };-->
-<!--    // Initialize Firebase-->
-<!--    firebase.initializeApp(firebaseConfig);-->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
 
-<!--    // Get a reference to the database service-->
-<!--    const database = firebase.database();-->
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAsMHb01kaNnScBYvznoDkO2E7n8IU8Hxg",
+        authDomain: "jjudaily.firebaseapp.com",
+        databaseURL: "https://jjudaily.firebaseio.com",
+        projectId: "jjudaily",
+        storageBucket: "jjudaily.appspot.com",
+        messagingSenderId: "426301015279",
+        appId: "1:426301015279:web:a3d93e1a896870560d871a"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
 
-<!--    function writePost(number, title, username, date) {-->
-<!--        // A post entry.-->
-<!--        const postData = {-->
-<!--            number,-->
-<!--            title,-->
-<!--            username,-->
-<!--            date,-->
-<!--        };-->
+    // Get a reference to the database service
+    const database = firebase.database();
 
-<!--        // Get a key for a new Post.-->
-<!--        const newPostKey = firebase.database().ref().child('posts').push(postData);-->
-<!--    }-->
+    function writePost(title, username, content, password) {
+        // A post entry.
+        let day = new Date();
+        let date = day.getFullYear() + "-" + (day.getMonth()+1) + "-" + day.getDate();
+        const postData = {
+            title,
+            username,
+            date,
+            content,
+            password,
+        };
 
-<!--    function getPosts(){-->
-<!--        const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){-->
-<!--            const postData = Object.entries(snapshot.val());-->
-<!--            let tableContent = document.querySelector(".content");-->
-
-<!--            console.log(tableContent);-->
-<!--            for (let i = 0; i < postData.length; i++)-->
-<!--            {-->
-<!--                const [key, body] = postData[i];-->
-
-<!--                tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"-->
-<!--            }-->
-<!--        });-->
-<!--    }-->
-
-<!--    const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){-->
-<!--        const postData = Object.entries(snapshot.val());-->
-<!--        let tableContent = document.querySelector(".content");-->
-<!--        tableContent.innerHTML = "";-->
-
-<!--        console.log(tableContent);-->
-<!--        for (let i = 0; i < postData.length; i++)-->
-<!--        {-->
-<!--            const [key, body] = postData[i];-->
-
-<!--            tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"-->
-<!--        }-->
-<!--    });-->
-
-<!--    console.log(database);-->
-<!--</script>-->
+        // Get a key for a new Post.
+        const newPostKey = firebase.database().ref().child('posts').push(postData);
+    }
+    console.log(database);
+</script>
 </body>
 </html>
