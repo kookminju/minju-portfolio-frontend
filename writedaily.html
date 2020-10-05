@@ -159,18 +159,15 @@
                         </tr>
                     </thread>
                     <tbody class="content">
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="작성자" name="username" maxlength="10"></td>
-                    </tr>
-                    <tr>
-                        <td><textarea type="text" class="form-control" placeholder="글 내용" name="content" maxlength="2048" style="height: 350px;"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="비밀번호" name="password" maxlength="10"></td>
-                    </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" placeholder="글 제목" id="title" maxlength="50"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" placeholder="작성자" id="username" maxlength="10"></td>
+                        </tr>
+                        <tr>
+                            <td><textarea type="text" class="form-control" placeholder="글 내용" id="content" maxlength="2048" style="height: 350px;"></textarea></td>
+                        </tr>
                     </tbody>
                 </table>
                 <input type="submit" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;" value="글쓰기">
@@ -191,9 +188,10 @@
     </div>
 </footer>
 
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" ></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+
 
 <script>
     // Your web app's Firebase configuration
@@ -212,7 +210,7 @@
     // Get a reference to the database service
     const database = firebase.database();
 
-    function writePost(title, username, content, password) {
+    function writePost(title, username, content) {
         // A post entry.
         let day = new Date();
         let date = day.getFullYear() + "-" + (day.getMonth()+1) + "-" + day.getDate();
@@ -221,13 +219,21 @@
             username,
             date,
             content,
-            password,
         };
-
         // Get a key for a new Post.
         const newPostKey = firebase.database().ref().child('posts').push(postData);
     }
+
+
+    $('.btn').click(function(){
+        var title = document.getElementById("title").value;
+        var username = document.getElementById("username").value;
+        var content = document.getElementById("content").value;
+        writePost(title, username, content);
+    });
+
     console.log(database);
+
 </script>
 </body>
 </html>
