@@ -134,89 +134,91 @@
     </style>
 </head>
 <body>
-<header>
-    <a href="./index.html">
-        <img src="image/logo.PNG" alt="My Image" width="310" height="120">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="./mepage.html">me</a> </li>
-            <li><a href="./projectpage.html">project</a></li>
-            <li><a href="./dailypage.html">daily</a></li>
-            <li><a href="./guestpage.html"><strong><U>guest</U></strong></a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <div class="container">
-        <div class="row">
-            <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-                <thread>
-                    <tr>
-                        <th style="background-color: #eeeeee; text-align: center;">번호</th>
-                        <th style="background-color: #eeeeee; text-align: center;">제목</th>
-                        <th style="background-color: #eeeeee; text-align: center;">작성자</th>
-                        <th style="background-color: #eeeeee; text-align: center;">작성일</th>
-                    </tr>
-                </thread>
-                <tbody class="content">
+    <header>
+        <a href="./index.html">
+            <img src="image/logo.PNG" alt="My Image" width="310" height="120">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="./mepage.html">me</a> </li>
+                <li><a href="./projectpage.html">project</a></li>
+                <li><a href="./dailypage.html">daily</a></li>
+                <li><a href="./guestpage.html"><strong><U>guest</U></strong></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+                    <thread>
+                        <tr>
+                            <th style="background-color: #eeeeee; text-align: center;">번호</th>
+                            <th style="background-color: #eeeeee; text-align: center;">제목</th>
+                            <th style="background-color: #eeeeee; text-align: center;">작성자</th>
+                            <th style="background-color: #eeeeee; text-align: center;">작성일</th>
+                        </tr>
+                    </thread>
+                    <tbody class="content">
 
-                </tbody>
-            </table>
-            <a href="writeguest.html" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;">글쓰기</a>
+                    </tbody>
+                </table>
+                <a href="writeguest.html" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;">글쓰기</a>
+            </div>
         </div>
-    </div>
-</main>
-<footer>
-    <div>&copyminju
-        <div class="mypage">
-            <a href="https://www.instagram.com/0205_jju/">
-                <img src="image/instagram.png" alt="My Image" width="30" height="30">
-            </a>
-            <a href="https://github.com/kookminju">
-                <img src="image/git.png" alt="My Image" width="22" height="22">
-            </a>
+    </main>
+    <footer>
+        <div>&copyminju
+            <div class="mypage">
+                <a href="https://www.instagram.com/0205_jju/">
+                    <img src="image/instagram.png" alt="My Image" width="30" height="30">
+                </a>
+                <a href="https://github.com/kookminju">
+                    <img src="image/git.png" alt="My Image" width="22" height="22">
+                </a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 
-<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
-<script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyBUFX93Aj5ehAaShRvKvhP-asQZbkEm_Uw",
-        authDomain: "jjuguest.firebaseapp.com",
-        databaseURL: "https://jjuguest.firebaseio.com",
-        projectId: "jjuguest",
-        storageBucket: "jjuguest.appspot.com",
-        messagingSenderId: "914843368286",
-        appId: "1:914843368286:web:afce25afb607c736932dcf"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // Get a reference to the database service
-    const database = firebase.database();
-
-    function writePost(number, title, username, date) {
-        // A post entry.
-        const postData = {
-            number,
-            title,
-            username,
-            date,
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBUFX93Aj5ehAaShRvKvhP-asQZbkEm_Uw",
+            authDomain: "jjuguest.firebaseapp.com",
+            databaseURL: "https://jjuguest.firebaseio.com",
+            projectId: "jjuguest",
+            storageBucket: "jjuguest.appspot.com",
+            messagingSenderId: "914843368286",
+            appId: "1:914843368286:web:afce25afb607c736932dcf"
         };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-        // Get a key for a new Post.
-        const newPostKey = firebase.database().ref().child('posts').push(postData);
-    }
+        // Get a reference to the database service
+        const database = firebase.database();
 
-    function getPosts(){
-        const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){
+        function getPosts(){
+            const postRef = firebase.database().ref('/posts/').once('value', function(snapshot){
+                const postData = Object.entries(snapshot.val());
+                let tableContent = document.querySelector(".content");
+
+                console.log(tableContent);
+                for (let i = 0; i < postData.length; i++)
+                {
+                    const [key, body] = postData[i];
+
+                    tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
+                }
+            });
+        }
+
+        const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){
             const postData = Object.entries(snapshot.val());
             let tableContent = document.querySelector(".content");
+            tableContent.innerHTML = "";
 
             console.log(tableContent);
             for (let i = 0; i < postData.length; i++)
@@ -226,25 +228,8 @@
                 tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
             }
         });
-    }
-
-    const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){
-        const postData = Object.entries(snapshot.val());
-        let tableContent = document.querySelector(".content");
-        tableContent.innerHTML = "";
-
-        console.log(tableContent);
-        for (let i = 0; i < postData.length; i++)
-        {
-            const [key, body] = postData[i];
-
-            tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
-        }
-    });
-
-
 
     console.log(database);
-</script>
+    </script>
 </body>
 </html>
