@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/image/project_ILS_icon.ico">
     <title>daily</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
@@ -216,6 +217,8 @@
             });
         }
 
+        function goPage() { location.href="./readdaily.html"; }
+
         const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){
             const postData = Object.entries(snapshot.val());
             let tableContent = document.querySelector(".content");
@@ -226,7 +229,7 @@
             {
                 const [key, body] = postData[i];
 
-                tableContent.innerHTML += "<tr><td>" + body.number + "</td> <td>" + body.title + "</td> <td>" + body.username + "</td> <td>" + body.date + "</td> </tr>"
+                tableContent.innerHTML += "<tr onclick=goPage()>><td>" + body.number + "</td><td>" + body.title + "</td><td>" + body.username + "</td><td>" + body.date + "</td></tr>"
             }
         });
 

@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/image/project_ILS_icon.ico">
     <title>write</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
@@ -210,9 +211,11 @@
 
     function writePost(title, username, content) {
         // A post entry.
+        let number = number+1;
         let day = new Date();
         let date = day.getFullYear() + "-" + (day.getMonth()+1) + "-" + day.getDate();
         const postData = {
+            number,
             title,
             username,
             date,
