@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/image/project_ILS_icon.ico">
-    <title>write</title>
+    <title>JJUTOPIA</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
         @font-face {
@@ -53,6 +53,9 @@
         }
         .container {
             width: 900px;
+        }
+        .content {
+            text-align: center;
         }
         footer {
             border-top: 1px solid #939393;
@@ -122,9 +125,6 @@
             .container {
                 width: 310px;
             }
-            .form-control {
-                font-size: 13px;
-            }
             footer {
                 width: 350px;
                 height: 35px;
@@ -137,7 +137,7 @@
 </head>
 <body>
 <header>
-    <a href="./index.html">
+    <a href="index.html">
         <img src="image/logo.PNG" alt="My Image" width="310" height="120">
     </a>
     <nav>
@@ -153,25 +153,19 @@
     <div class="container">
         <div class="row">
             <form method="get" action="dailypage.html">
-                <table class="table table-borderless" style="text-align: center; border: 1px solid #dddddd">
+                <table class="table table-borderless" style="border: 1px solid #dddddd">
                     <thread>
                         <tr>
                             <th clospan= "2" style="background-color: #eeeeee; text-align: center;">오늘기록･ᴗ･</th>
                         </tr>
                     </thread>
-                    <tbody class="content">
-                        <tr>
-                            <td><input type="text" class="form-control" placeholder="글 제목" id="title" maxlength="50"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" class="form-control" placeholder="작성자" id="username" maxlength="10"></td>
-                        </tr>
-                        <tr>
-                            <td><textarea type="text" class="form-control" placeholder="글 내용" id="content" maxlength="2048" style="height: 350px;"></textarea></td>
-                        </tr>
+                    <tbody class="contents">
+                    <tr>
+                        <td class="content"></td>
+                    </tr>
                     </tbody>
                 </table>
-                <input type="submit" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;" value="등록">
+                <input type="submit" class="btn btn-primary pull-right" style="background-color: #78aac3; border-color: #78aac3;" value="목록">
             </form>
         </div>
     </div>
@@ -223,11 +217,17 @@
         const newPostKey = firebase.database().ref().child('posts').push(postData);
     }
 
-    $('.btn').click(function(){
-        var title = document.getElementById("title").value;
-        var username = document.getElementById("username").value;
-        var content = document.getElementById("content").value;
-        writePost(title, username, content);
+    firebase.database().ref('/posts/').on('value', function (snapshot) {
+        const postData = Object.entries(snapshot.val());
+        let tableContent = document.querySelector(".content")
+        tableContent.innerHTML = "";
+
+        for(let i = 0; i < postData.length;i++)
+        {
+            const[key,body] = postData[i];
+            tableContent.innerHTML = "<tr><td>제목 : " + body.title + "</td> <br> <td>작성자 : " + body.username + "</td> <br> <td>" + body.content + "</td> <br> <td>날짜 : " + body.date + "</td></tr>"
+
+        }
     });
 
     console.log(database);

@@ -217,7 +217,7 @@
             });
         }
 
-        function goPage() { location.href="./readdaily.html"; }
+        function goPage() { location.href="readdaily.html?num='1'";  }
 
         const postRef = firebase.database().ref('/posts/').on('value', function(snapshot){
             const postData = Object.entries(snapshot.val());
@@ -229,7 +229,7 @@
             {
                 const [key, body] = postData[i];
 
-                tableContent.innerHTML += "<tr onclick=goPage()>><td>" + body.number + "</td><td>" + body.title + "</td><td>" + body.username + "</td><td>" + body.date + "</td></tr>"
+                tableContent.innerHTML += "<tr onclick=goPage()><td>" + body.number + "</td><td>" + body.title + "</td><td>" + body.username + "</td><td>" + body.date + "</td></tr>"
             }
         });
 
